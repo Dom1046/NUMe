@@ -14,6 +14,7 @@ public class Review {
                 }
             }
         }
+        return -1;
     }
 
     public int volution(String[][] clothes) {
@@ -27,6 +28,7 @@ public class Review {
                 x++;
             }
         }
+        return -1;
     }
 
 
