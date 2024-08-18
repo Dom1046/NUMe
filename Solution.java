@@ -55,4 +55,20 @@ public class Solution {
 
         return count;
     }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // 테스트 데이터 정의
+        int n = 6;
+        int[][] vertex = {
+                {1, 2},
+                {1, 3},
+                {2, 4},
+                {2, 5},
+                {3, 6}
+        };
+        int result = solution.solution(n, vertex);
+        System.out.println("The number of nodes farthest from node 1: " + result);
+    }
 }
