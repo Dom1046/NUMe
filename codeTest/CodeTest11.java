@@ -1,6 +1,11 @@
+package codeTest;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
-class Graph {
+class Main {
     class Node {
         int data;
         LinkedList<Node> adjacent;
@@ -15,7 +20,7 @@ class Graph {
 
     Node[] nodes;
 
-    Graph(int size) {
+    Main(int size) {
         nodes = new Node[size];
         for (int i = 0; i < size; i++) {
             nodes[i] = new Node(i);
@@ -30,6 +35,30 @@ class Graph {
         }
         if (!n2.adjacent.contains(n1)) {
             n2.adjacent.add(n1);
+        }
+    }
+
+    void addEdge(int i1, int i2, int i3) {
+        Node n1 = nodes[i1];
+        Node n2 = nodes[i2];
+        Node n3 = nodes[i3];
+        if (!n1.adjacent.contains(n2)) {
+            n1.adjacent.add(n2);
+        }
+        if (!n1.adjacent.contains(n3)) {
+            n1.adjacent.add(n3);
+        }
+        if (!n3.adjacent.contains(n2)) {
+            n3.adjacent.add(n2);
+        }
+        if (!n2.adjacent.contains(n1)) {
+            n2.adjacent.add(n1);
+        }
+        if (!n2.adjacent.contains(n3)) {
+            n2.adjacent.add(n3);
+        }
+        if (!n3.adjacent.contains(n1)) {
+            n3.adjacent.add(n1);
         }
     }
 
@@ -98,21 +127,35 @@ class Graph {
     void visit(Node n) {
         System.out.print(n.data + " ");
     }
-}
 
-public class CodeTest11 {
-    public static void main(String[] args) {
-        Graph graph = new Graph(9);
-        graph.addEdge(0, 1);
-        graph.addEdge(1, 2);
-        graph.addEdge(1, 3);
-        graph.addEdge(2, 4);
-        graph.addEdge(2, 3);
-        graph.addEdge(3, 4);
-        graph.addEdge(3, 5);
-        graph.addEdge(5, 6);
-        graph.addEdge(5, 7);
-        graph.addEdge(6, 8);
-        graph.dfsR();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int nodeCount = Integer.parseInt(st.nextToken()); // 노드의 수
+        int edgeCount = Integer.parseInt(st.nextToken()); // 간선의 수
+        int startNode = Integer.parseInt(st.nextToken()) - 1; // 탐색을 시작할 노드 (인덱스는 0부터 시작하므로 -1)
+
+        Main graph = new Main(nodeCount);
+
+        for (int i = 0; i < edgeCount; i++) {
+            st = new StringTokenizer(br.readLine());
+            int u = Integer.parseInt(st.nextToken()) - 1; // 첫 번째 노드
+            int v = Integer.parseInt(st.nextToken()) - 1; // 두 번째 노드
+            graph.addEdge(u, v);
+        }
+
+        System.out.print("DFS: ");
+        graph.dfs(startNode); // 시작 노드부터 DFS 수행
+        System.out.println();
+
+        // 모든 노드의 marked 상태 초기화
+        for (int i = 0; i < nodeCount; i++) {
+            graph.nodes[i].marked = false;
+        }
+
+        System.out.print("BFS: ");
+        graph.bfs(startNode); // 시작 노드부터 BFS 수행
+        System.out.println();
     }
 }

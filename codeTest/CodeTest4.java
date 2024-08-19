@@ -1,3 +1,5 @@
+package codeTest;
+
 import java.util.Arrays;
 
 public class CodeTest4 {

@@ -1,5 +1,6 @@
+package codeTest;
+
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class CodeTest5 {
     public int solution(String my_string, String is_prefix) {

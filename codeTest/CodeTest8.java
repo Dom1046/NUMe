@@ -1,3 +1,5 @@
+package codeTest;
+
 import java.util.Scanner;
 
 public class CodeTest8 {

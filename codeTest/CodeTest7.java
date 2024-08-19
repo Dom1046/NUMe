@@ -1,3 +1,5 @@
+package codeTest;
+
 public class CodeTest7 {
     public String solution(String my_string, int n) {
         return isChech(my_string, n);

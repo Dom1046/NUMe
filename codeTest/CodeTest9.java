@@ -1,4 +1,4 @@
-import java.util.Scanner;
+package codeTest;
 
 public class CodeTest9 {
     public int solution(int n) {

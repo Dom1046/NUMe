@@ -1,4 +1,4 @@
-import java.util.*;
+package codeTest;
 
 public class Review {
     int times= 1;
